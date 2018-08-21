@@ -366,134 +366,9 @@
       
         
           
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leafsec.github.io/2018/08/20/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LeafSec">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LeafSec">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/20/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-20T18:43:30+08:00">
-                2018-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <p>Trustzone 是基于Arm平台的一种硬件隔离机制，集成在Arm Cortex-A 系列的处理器上，Cortex-M23 和 Cortex-M33 的系统也进行了集成支持。<br>Arm Trustzone 创建了一个隔离的区域，用于保护包括授权、支付等高价值的代码和数据，经常用于实现可信执行环境(TEE)。<br>Trustzone 工作在硬件层，它将系统分为Normal OS 和Secure OS 两个部分，在SecureOS中提供可信环境。如下图所示。<br><img src="/2018/08/21/Android-Trustzone-笔记/Architecture.png" alt="Trustzone 体系结构"><br>从官方网站上看，Trustzone的支持可以通过不同的硬件方式。<br>实际上一种简单的方式是：分时复用处理器，分别运行Normal OS内核和Secure OS内核。<br>为了安全，Secure OS 内核设计的较小，降低被攻击的概率。<br>还有一种做法是通过总线，设计专门的硬件线路，将Secure OS隔离起来执行，IPhone 手机上采取了这种做法。<br>Trustzone处于普通OS层之下。<br>Arm V8处理器有4个运行级别：EL0-EL3。其中EL0处于应用层，权限最低。<br>EL3标志位将运行环境分割成两个部分，可以切换Normal OS(也被称为Rich OS)和Secure OS。<br>在切换Rich和Trust时，通过SMC指令触发硬件异常。<br>切换时，由运行在EL3中的Secure Monitor（最高权限）保存Rich OS端的上下文（缓存），然后将缓存的Secure OS切换到执行环境。<br>整个过程类似于线程之间的切换。<br>开源Secure Monitor：<a href="https://github.com/OP-TEE" target="_blank" rel="noopener">https://github.com/OP-TEE</a><br>Linaro: <a href="https://www.linaro.org/latest/downloads/" target="_blank" rel="noopener">https://www.linaro.org/latest/downloads/</a><br>Developer Arm: <a href="https://developer.arm.com/open-source" target="_blank" rel="noopener">https://developer.arm.com/open-source</a><br>芯片文档: <a href="http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.prd29-genc-009492c/index.html" target="_blank" rel="noopener">http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.prd29-genc-009492c/index.html</a></p>
+<hr>
+<p>对移动端安全来讲，有两块非常重要的部分。一是GSM手机上的IMEI码，这是手机联网时使用的唯一码。<br>另外一个是用于绑定SIM卡和运营商的SIMLock协议。<br>虽然这两个组件都提供安全性控制，但都可以通过很简单的方式bypass。</p>
 
           
         
@@ -579,7 +454,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

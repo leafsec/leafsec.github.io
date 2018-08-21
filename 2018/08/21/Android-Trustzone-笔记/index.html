@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="主要面向系统安全/Android/逆向分析/无人驾驶等领域">
+<meta name="description" content="Trustzone 是基于Arm平台的一种硬件隔离机制，集成在Arm Cortex-A 系列的处理器上，Cortex-M23 和 Cortex-M33 的系统也进行了集成支持。Arm Trustzone 创建了一个隔离的区域，用于保护包括授权、支付等高价值的代码和数据，经常用于实现可信执行环境(TEE)。Trustzone 工作在硬件层，它将系统分为Normal OS 和Secure OS 两个部">
 <meta name="keywords" content="Android, Trustzone, 学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Trustzone 笔记">
 <meta property="og:url" content="https://leafsec.github.io/2018/08/21/Android-Trustzone-笔记/index.html">
 <meta property="og:site_name" content="LeafSec">
-<meta property="og:description" content="主要面向系统安全/Android/逆向分析/无人驾驶等领域">
+<meta property="og:description" content="Trustzone 是基于Arm平台的一种硬件隔离机制，集成在Arm Cortex-A 系列的处理器上，Cortex-M23 和 Cortex-M33 的系统也进行了集成支持。Arm Trustzone 创建了一个隔离的区域，用于保护包括授权、支付等高价值的代码和数据，经常用于实现可信执行环境(TEE)。Trustzone 工作在硬件层，它将系统分为Normal OS 和Secure OS 两个部">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-21T02:39:36.613Z">
+<meta property="og:image" content="https://leafsec.github.io/2018/08/21/Android-Trustzone-笔记/Architecture.png">
+<meta property="og:updated_time" content="2018-08-21T07:45:34.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Trustzone 笔记">
-<meta name="twitter:description" content="主要面向系统安全/Android/逆向分析/无人驾驶等领域">
+<meta name="twitter:description" content="Trustzone 是基于Arm平台的一种硬件隔离机制，集成在Arm Cortex-A 系列的处理器上，Cortex-M23 和 Cortex-M33 的系统也进行了集成支持。Arm Trustzone 创建了一个隔离的区域，用于保护包括授权、支付等高价值的代码和数据，经常用于实现可信执行环境(TEE)。Trustzone 工作在硬件层，它将系统分为Normal OS 和Secure OS 两个部">
+<meta name="twitter:image" content="https://leafsec.github.io/2018/08/21/Android-Trustzone-笔记/Architecture.png">
 
 
 
@@ -362,7 +364,10 @@
       
 
       
-        
+        <p>Trustzone 是基于Arm平台的一种硬件隔离机制，集成在Arm Cortex-A 系列的处理器上，Cortex-M23 和 Cortex-M33 的系统也进行了集成支持。<br>Arm Trustzone 创建了一个隔离的区域，用于保护包括授权、支付等高价值的代码和数据，经常用于实现可信执行环境(TEE)。<br>Trustzone 工作在硬件层，它将系统分为Normal OS 和Secure OS 两个部分，在SecureOS中提供可信环境。如下图所示。<br><img src="/2018/08/21/Android-Trustzone-笔记/Architecture.png" alt="Trustzone 体系结构"><br>从官方网站上看，Trustzone的支持可以通过不同的硬件方式。<br>实际上一种简单的方式是：分时复用处理器，分别运行Normal OS内核和Secure OS内核。<br>为了安全，Secure OS 内核设计的较小，降低被攻击的概率。<br>还有一种做法是通过总线，设计专门的硬件线路，将Secure OS隔离起来执行，IPhone 手机上采取了这种做法。<br>Trustzone处于普通OS层之下。<br>Arm V8处理器有4个运行级别：EL0-EL3。其中EL0处于应用层，权限最低。<br>EL3标志位将运行环境分割成两个部分，可以切换Normal OS(也被称为Rich OS)和Secure OS。<br>在切换Rich和Trust时，通过SMC指令触发硬件异常。<br>切换时，由运行在EL3中的Secure Monitor（最高权限）保存Rich OS端的上下文（缓存），然后将缓存的Secure OS切换到执行环境。<br>整个过程类似于线程之间的切换。<br>开源Secure Monitor：<a href="https://github.com/OP-TEE" target="_blank" rel="noopener">https://github.com/OP-TEE</a><br>Linaro: <a href="https://www.linaro.org/latest/downloads/" target="_blank" rel="noopener">https://www.linaro.org/latest/downloads/</a><br>Developer Arm: <a href="https://developer.arm.com/open-source" target="_blank" rel="noopener">https://developer.arm.com/open-source</a><br>芯片文档: <a href="http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.prd29-genc-009492c/index.html" target="_blank" rel="noopener">http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.prd29-genc-009492c/index.html</a></p>
+<hr>
+<p>对移动端安全来讲，有两块非常重要的部分。一是GSM手机上的IMEI码，这是手机联网时使用的唯一码。<br>另外一个是用于绑定SIM卡和运营商的SIMLock协议。<br>虽然这两个组件都提供安全性控制，但都可以通过很简单的方式bypass。</p>
+
       
     </div>
     
@@ -388,22 +393,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/08/20/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -472,7 +461,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
