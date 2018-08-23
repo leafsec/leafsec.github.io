@@ -273,6 +273,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leafsec.github.io/2018/08/23/NVIDIA-TX2-Autoware-环境搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LeafSec">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LeafSec">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/23/NVIDIA-TX2-Autoware-环境搭建/" itemprop="url">NVIDIA TX2 Autoware 环境搭建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-23T14:15:13+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/无人驾驶/" itemprop="url" rel="index">
+                    <span itemprop="name">无人驾驶</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>拿到了NVIDIA TX2 的板子，首先按照教程给板子刷上最新的官方系统。<br>按照网上刷机教程：<br><a href="https://www.jianshu.com/p/bb4587014349" target="_blank" rel="noopener">https://www.jianshu.com/p/bb4587014349</a><br>成功将最新的系统刷到TX2上。<br>需要注意的是：Ubuntu主机需要和TX2处于同一个路由器下面，否则在按照时将卡在find targe IP上面。</p>
+<hr>
+<p>接着在板子上部署无人驾驶系统。<br>本文选择开源的Autoware系统，官方网站： <a href="https://autoware.ai" target="_blank" rel="noopener">https://autoware.ai</a> 。</p>
+<ol>
+<li>部署ROS相关的环境: <a href="https://github.com/jetsonhacks/installROSTX2" target="_blank" rel="noopener">https://github.com/jetsonhacks/installROSTX2</a>. Follow this: <a href="https://www.jetsonhacks.com/2017/03/27/robot-operating-system-ros-nvidia-jetson-tx2/" target="_blank" rel="noopener">https://www.jetsonhacks.com/2017/03/27/robot-operating-system-ros-nvidia-jetson-tx2/</a></li>
+<li>Autoware 官网： <a href="https://autoware.ai。按照" target="_blank" rel="noopener">https://autoware.ai。按照</a> <a href="https://github.com/CPFL/Autoware/wiki/Source-Build" target="_blank" rel="noopener">https://github.com/CPFL/Autoware/wiki/Source-Build</a> 进行安装.<br>遇到问题：<br>No definition of [python-flask]<br>使用命令: rosdep update<br>完成之后解决.</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://leafsec.github.io/2018/08/21/Android-Trustzone-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -454,7 +602,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -465,7 +613,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -476,7 +624,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
