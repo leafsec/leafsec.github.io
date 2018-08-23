@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LeafSec">
 <meta property="og:description" content="拿到了NVIDIA TX2 的板子，首先按照教程给板子刷上最新的官方系统。按照网上刷机教程：https://www.jianshu.com/p/bb4587014349成功将最新的系统刷到TX2上。需要注意的是：Ubuntu主机需要和TX2处于同一个路由器下面，否则在按照时将卡在find targe IP上面。另外本人在安装过程中，使用的网络环境比较复杂。在将系统刷进去之后，遇到了TX2联网却没有">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-23T06:40:31.885Z">
+<meta property="og:updated_time" content="2018-08-23T06:57:52.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NVIDIA TX2 Autoware 环境搭建">
 <meta name="twitter:description" content="拿到了NVIDIA TX2 的板子，首先按照教程给板子刷上最新的官方系统。按照网上刷机教程：https://www.jianshu.com/p/bb4587014349成功将最新的系统刷到TX2上。需要注意的是：Ubuntu主机需要和TX2处于同一个路由器下面，否则在按照时将卡在find targe IP上面。另外本人在安装过程中，使用的网络环境比较复杂。在将系统刷进去之后，遇到了TX2联网却没有">
@@ -369,6 +369,8 @@
 <li>部署ROS相关的环境: <a href="https://github.com/jetsonhacks/installROSTX2" target="_blank" rel="noopener">https://github.com/jetsonhacks/installROSTX2</a>.<br>使用该链接: <a href="https://www.jetsonhacks.com/2017/03/27/robot-operating-system-ros-nvidia-jetson-tx2/" target="_blank" rel="noopener">https://www.jetsonhacks.com/2017/03/27/robot-operating-system-ros-nvidia-jetson-tx2/</a><br>描述的方法将Ubuntu支持ROS。</li>
 <li>Autoware 官网： <a href="https://autoware.ai。按照" target="_blank" rel="noopener">https://autoware.ai。按照</a> <a href="https://github.com/CPFL/Autoware/wiki/Source-Build" target="_blank" rel="noopener">https://github.com/CPFL/Autoware/wiki/Source-Build</a> 进行安装。<br>在build之前遇到问题：<br>No definition of [python-flask]<br>使用命令: rosdep update<br>完成之后解决.</li>
 </ol>
+<hr>
+<p>最后： sudo ~/jetson_clocks.sh<br>开启最大功耗</p>
 
       
     </div>
